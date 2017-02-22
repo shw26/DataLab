@@ -97,6 +97,7 @@ public class ColorFragment extends Fragment implements AdapterView.OnItemSelecte
         int[] colorArr = this.getResources().getIntArray(R.array.colorArray);
 
         getActivity().findViewById(R.id.content_main).setBackgroundColor(colorArr[position]);
+        mListener.onFragmentInteraction(colorArr[position], position);
 
     }
 

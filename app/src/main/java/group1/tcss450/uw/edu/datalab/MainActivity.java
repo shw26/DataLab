@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +27,8 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnF
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mColorFragment = new ColorFragment();
+
+
 
         mPrefs = getSharedPreferences(getString(R.string.SHARED_PREFS), Context.MODE_PRIVATE);
         findViewById(R.id.content_main).
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnF
         //noinspection SimplifiableIfStatement
         if (id == R.id.file_menu_item) {
             // TODO: 2017/2/22  something happened over here. mColorFragment.getArguments() is null.
+
             mColorFragment.getArguments().putInt(getString(R.string.POSITION),
                     mPrefs.getInt(getString(R.string.POSITION), 0));
 
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnF
 
     @Override
     public void onFragmentInteraction(int color, int pos) {
+        Log.d("main","here");
         saveToSharedPrefs(color, pos);
         saveToFile(color, pos);
     }
