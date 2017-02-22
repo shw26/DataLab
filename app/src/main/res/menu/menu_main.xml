@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="group1.tcss450.uw.edu.datalab.MainActivity">
+
+    <item
+        android:id="@+id/file_menu_item"
+        android:orderInCategory="100"
+        android:title="List of Colors"
+        app:showAsAction="never" />
+</menu>
