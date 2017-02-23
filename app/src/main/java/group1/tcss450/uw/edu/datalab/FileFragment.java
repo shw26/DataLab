@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,9 +71,14 @@ public class FileFragment extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem trashcan = menu.findItem(R.id.file_trashcan);
-        trashcan.setVisible(!clear);
+
+        if (!mPrefs.contains(getString(R.string.SHARED_PREFS))) {
+            trashcan.setVisible(!clear);
+        }
+
         trashcan = menu.findItem(R.id.db_trashcan);
         trashcan.setVisible(false);
+        Log.d("file onPrepareOption",clear+"");
 
     }
 
@@ -88,6 +94,8 @@ public class FileFragment extends Fragment {
         LinearLayout ll = (LinearLayout) getActivity().findViewById(R.id.file_fragment);
         ll.removeAllViews();
         clear = true;
+        setHasOptionsMenu(true);
+        getActivity().invalidateOptionsMenu();
         return super.onOptionsItemSelected(item);
     }
 

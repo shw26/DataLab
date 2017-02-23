@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/db_fragment"
     tools:context="group1.tcss450.uw.edu.datalab.DBFragment">
 
 

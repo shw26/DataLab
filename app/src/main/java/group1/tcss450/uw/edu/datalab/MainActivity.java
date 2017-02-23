@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.OutputStreamWriter;
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnF
     ColorFragment mColorFragment;
     private ColorDB mCourseDB;
     public Menu mMenu;
+
+    private boolean dbt;
+    private boolean filet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +49,11 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnF
         if (savedInstanceState == null) {
             if (findViewById(R.id.content_main) != null) {
                 mColorFragment = new ColorFragment();
-                if (pos != 0) {
+                //if (pos != 0) {
                     Bundle args = new Bundle();
                     args.putInt(getString(R.string.POSITION), pos);
                     mColorFragment.setArguments(args);
-                }
+                //}
 
                 getSupportFragmentManager().beginTransaction()
                         .add(R.id.content_main, mColorFragment)
@@ -133,7 +137,12 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnF
 //            Toast.makeText(this, "clear mPref", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.db_trashcan) {
             mCourseDB.dropTable();
+
+            // TODO: 2017/2/23 i dont know.
+            LinearLayout ll = (LinearLayout) findViewById(R.id.db_fragment);
+            ll.removeAllViews();
             Toast.makeText(this, "clear DB", Toast.LENGTH_SHORT).show();
+            invalidateOptionsMenu();
         }
 
 
@@ -170,17 +179,17 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnF
         }
     }
 
-    private void wipeFile(){
-        try{
-            OutputStreamWriter opsw = new OutputStreamWriter(
-                    openFileOutput(getString(R.string.COLOR)
-                            , Context.MODE_PRIVATE));
-            opsw.append("");
-            opsw.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void wipeFile(){
+//        try{
+//            OutputStreamWriter opsw = new OutputStreamWriter(
+//                    openFileOutput(getString(R.string.COLOR)
+//                            , Context.MODE_PRIVATE));
+//            opsw.append("");
+//            opsw.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void saveToSqlite(int color) {
         if (mCourseDB == null) {
