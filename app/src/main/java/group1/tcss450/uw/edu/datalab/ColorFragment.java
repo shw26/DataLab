@@ -1,13 +1,11 @@
 package group1.tcss450.uw.edu.datalab;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -32,8 +30,20 @@ public class ColorFragment extends Fragment implements AdapterView.OnItemSelecte
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        MenuItem trashcan = menu.findItem(R.id.file_trashcan);
+        trashcan.setVisible(false);
+        trashcan = menu.findItem(R.id.db_trashcan);
+        trashcan.setVisible(false);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        setHasOptionsMenu(true);
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_color, container, false);
         spinner = (Spinner) v.findViewById(R.id.spinner);

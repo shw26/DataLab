@@ -7,5 +7,24 @@
         android:id="@+id/file_menu_item"
         android:orderInCategory="100"
         android:title="List of Colors"
+        android:visible="false"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/db_menu_item"
+        android:orderInCategory="100"
+        android:title="DataBase of Colors"
+        android:visible="false"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/file_trashcan"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/db_trashcan"
+        android:icon="@android:drawable/ic_input_delete"
+        android:visible="false"
+        app:showAsAction="always"/>
 </menu>
